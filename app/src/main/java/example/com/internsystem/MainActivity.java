@@ -8,25 +8,28 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    String user = "user";
-    String pass = "pass";
+
 
     public Button but1;
 
-    public void init() {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final EditText loginText = (EditText) findViewById(R.id.teachID);
+        final EditText loginPassword = (EditText) findViewById(R.id.teachPW);
+        final Button button = (Button) findViewById(R.id.bLogin);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = null;
+                if(loginText.getText().equals("user") &&
+                        loginPassword.getText().equals("pass")) {
+                    System.out.println("Entering");
+                    myIntent = new Intent(view.getContext(), Page1.class);
+                } else {
 
-        but1 = (Button) findViewById(R.id.bLogin);
-        but1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toy = new Intent();
-
+                }
+                startActivity(myIntent);
             }
         });
     }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-}
